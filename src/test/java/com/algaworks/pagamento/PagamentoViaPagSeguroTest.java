@@ -8,19 +8,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.algaworks.gestorderisco.AlertaDeRiscoException;
-import com.algaworks.gestorderisco.FControl;
 import com.algaworks.operadora.CapturaNaoAutorizadaException;
-import com.algaworks.operadora.Cielo;
+import com.algaworks.pagamento.pagseguro.PagSeguroModuloPagamentoFactory;
 
 public class PagamentoViaPagSeguroTest {
 
-	private PagamentoPagSeguro pagamento;
+	private Pagamento pagamento;
 	
 	@Before
 	public void init() {
-		Cielo cielo = new Cielo();
-		FControl fcontrol = new FControl();
-		pagamento = new PagamentoPagSeguro(cielo, fcontrol);
+		ModuloPagamentoFactory moduloPagamentoFactory = new PagSeguroModuloPagamentoFactory();
+		pagamento = new Pagamento(moduloPagamentoFactory);
 	}
 	
 	@Test
